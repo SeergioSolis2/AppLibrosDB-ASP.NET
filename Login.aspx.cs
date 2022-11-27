@@ -62,5 +62,39 @@ namespace AppLibrosDB
             return jsonString;
 
         }
+
+
+        [WebMethod]
+        public static void Registro(string Nombres, string Apellido_P, string Apellido_M, string Sexo, string Nacionalidad, string FNac, string Usuario, string Email, string Contrasena)
+        {
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            List<Perfil> Perfil = new List<Perfil>();
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                //String sql = "SELECT Usuario,Contrasena FROM appdblibros.perfil where Usuario='" + Username + "' and Contrasena='" + password + "'";
+                String sql = "INSERT INTO appdblibro.dbo.perfil(Nombres, Apellido_P,Apellido_M,Sexo,Nacionalidad,FNac,Usuario,Email,Contrasena,FReg) VALUES ('"+Nombres+"',' "+Apellido_P+"', '"+Apellido_M+ "', '" + Sexo + "', '" + Nacionalidad + "', '" + FNac + "', '" + Usuario + "', '" + Email + "', '" + Contrasena + "',GETDATE())";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    //command.ExecuteNonQuery();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        //while (reader.Read())
+                        //{
+                        //}
+                    }
+                }
+            }
+
+        
+
+        }
+
+
     }
 }

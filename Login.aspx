@@ -286,7 +286,7 @@
           <div class="col-12">
                 <label>Fecha Nacimiento:</label>
                 <br />
-                <input type="date" />
+                <input id="F_Nac"type="date" />
           </div>
           <br />
           <div class="col-12" >
@@ -312,7 +312,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Registrarse</button>
+        <button type="button" class="btn btn-primary" onclick=" Registro()" data-bs-dismiss="modal">Registrarse</button>
       </div>
     </div>
   </div>
