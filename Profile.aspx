@@ -7,7 +7,7 @@
                 <button class="btn btn-secondary"> 
                 <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button> 
                 <span id="NombrePerfil" class="name mt-3"></span> 
-                <span class="idd">@eleanorpena</span> 
+                <span id="Username" class="idd"></span> 
                 <div class="d-flex flex-row justify-content-center align-items-center gap-2"> 
                     <span class="idd1">Oxc4c16a645_b21a</span> 
                     <span><i class="fa fa-copy"></i></span> 
