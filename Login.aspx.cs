@@ -23,6 +23,7 @@ namespace AppLibrosDB
         {
             string username = null;
             Context.Session.Add("Usuario",username);
+
         }
 
         [WebMethod]
@@ -38,7 +39,7 @@ namespace AppLibrosDB
          
 
                 //String sql = "SELECT Usuario,Contrasena FROM appdblibros.perfil where Usuario='" + Username + "' and Contrasena='" + password + "'";
-                String sql = "SELECT Usuario,Contrasena FROM appdblibro.dbo.perfil where Usuario='"+Username+"' and Contrasena='"+password+"' ;";
+                String sql = "SELECT Usuario,Contrasena FROM appdblibro.dbo.perfil where (Usuario='" + Username + "' and Contrasena='" + password + "') or (Email='" + Username + "'and Contrasena='" + password + "') ;";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
