@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
@@ -15,9 +16,13 @@ namespace AppLibrosDB
     public partial class Prueba2 : System.Web.UI.Page
     {
         public static string conexion = "Data Source=DESKTOP-PND4PUV;Initial Catalog=master;Integrated Security=True";
+     
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-     
+            string username = null;
+            Context.Session.Add("Usuario",username);
         }
 
         [WebMethod]
@@ -30,7 +35,7 @@ namespace AppLibrosDB
             using (SqlConnection connection = new SqlConnection(conexion))
             {
 
-
+         
 
                 //String sql = "SELECT Usuario,Contrasena FROM appdblibros.perfil where Usuario='" + Username + "' and Contrasena='" + password + "'";
                 String sql = "SELECT Usuario,Contrasena FROM appdblibro.dbo.perfil where Usuario='"+Username+"' and Contrasena='"+password+"' ;";
@@ -39,14 +44,15 @@ namespace AppLibrosDB
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                        HttpContext.Current.Session["Usuario"]= Username;
                         while (reader.Read())
                         {
-
-
+                           
                             Perfil.Add(new Perfil()
                             {
                                 Usuario = reader[0].ToString(),
                                 Password = reader[1].ToString()
+                                
                             }
                             );
                            
