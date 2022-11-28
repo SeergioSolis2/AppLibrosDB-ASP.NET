@@ -15,6 +15,15 @@ namespace AppLibrosDB.Modelos
         public string ApellidoP { get; set; }
         public string ApellidoM { get; set; }
 
+        public string Email { get; set; }
+
+        public string FechaNacimiento { get; set; }
+
+        public string FechaRegistro { get; set; }
+
+        public string Followers { get; set; }
+
+        public string Followings { get; set; }
 
 
 
