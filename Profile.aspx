@@ -46,7 +46,7 @@
         </div>
         </div>
 
-        <div class="col-8" style="border:5px solid black">
+        <div class="col-10" style="border:5px solid red">
 
         </div>
     

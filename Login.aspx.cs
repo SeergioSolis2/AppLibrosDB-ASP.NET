@@ -15,7 +15,7 @@ namespace AppLibrosDB
     
     public partial class Prueba2 : System.Web.UI.Page
     {
-        public static string conexion = "Data Source=DESKTOP-PND4PUV;Initial Catalog=master;Integrated Security=True";
+        public static string conexion = "Data Source=JOSEFATMH;Initial Catalog=master;Integrated Security=True";
      
 
 
