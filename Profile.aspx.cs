@@ -170,6 +170,124 @@ namespace AppLibrosDB
         }
 
 
+
+        [WebMethod]
+
+        public static void NewPublicacion(string titulo, string contenido)
+        {
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                String sql = "insert into appdblibro.dbo.publicaciones (IDPerfil,Titulo,Cuerpo,Fpub,Rating) values ("+HttpContext.Current.Session["IdUser"]+",'" + titulo+"','"+contenido+"',GETDATE(),0) ";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+
+                    }
+                }
+            }
+        }
+
+        [WebMethod]
+        public static void DeletePublicacion(int id)
+        {
+           
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                String sql = "delete from appdblibro.dbo.publicaciones where IDPublicacion="+id+"";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                      
+
+                    }
+                }
+            }
+        }
+
+
+        [WebMethod]
+
+        public static string GetPublicacion()
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            List<Publicacion> Publicacion = new List<Publicacion>();
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                String sql = "select IDPublicacion,IDPerfil,Titulo,Cuerpo,Fpub,Rating from appdblibro.dbo.publicaciones where IDPerfil="+ HttpContext.Current.Session["IdUser"] + "";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+
+                            Publicacion.Add(new Publicacion()
+                            {
+                                IDPublicacion=reader[0].ToString(),
+                                IDPerfil=reader[1].ToString(),
+                                Titulo=reader[2].ToString(),
+                                Cuerpo=reader[3].ToString(),
+                                FechaPublicacion=reader[4].ToString(),
+                                Rating=reader[5].ToString()
+                            }
+                            );
+
+
+
+
+                        }
+                    }
+                }
+            }
+
+            string jsonString = js.Serialize(Publicacion);
+            return jsonString;
+        }
+
+        [WebMethod]
+
+        public static void EditarPublicacion(string titulo, string Cuerpo, int ID )
+        {
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                String sql = "update appdblibro.dbo.publicaciones set Cuerpo='"+Cuerpo+"',Titulo='"+titulo+"',Fpub=GETDATE() where IDPublicacion="+ID+"";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+
+
+                    }
+                }
+            }
+        }
+
         [WebMethod]
         public static void cerrarsesion()
         {

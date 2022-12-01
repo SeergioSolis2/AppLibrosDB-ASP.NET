@@ -2,11 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Contenido" Runat="Server">
     <div class="row">
-        <div class="col-3 d-flex justify-content-left"> 
-        <div class="card p-4"> 
-            <div class=" image d-flex flex-column justify-content-center align-items-center"> 
-                <button class="btn btn-secondary"> 
-                <img src="Image/FotoPerfil.png" height="100" width="100" /></button> 
+        <div class="col-3  justify-content-left"  > 
+        <div class="card p-4" style="border:5px solid gray;background-color:white;border-radius:10px"> 
+            <div class=" image d-flex flex-column justify-content-center align-items-center" style="background-color:floralwhite;border:5px solid black;border-radius:10px"> 
+                <span style="background-color:floralwhite;" > 
+                <img src="Image/FotoPerfil.png" height="100" width="100" /></span> 
                 <span id="NombrePerfil" class="name mt-3"></span> 
                 <span id="Username" class="idd"></span> 
                 <div class="d-flex flex-row justify-content-center align-items-center gap-2"> 
@@ -46,16 +46,95 @@
         </div>
         </div>
 
-        <div class="col-10" style="border:5px solid red">
-
+        <div class="col-9" style="border:5px solid gray;border-radius:25px;background-color:whitesmoke" >
+             <input  data-bs-toggle="modal" data-bs-target="#NewPublicacion" type="button" class="btn-success" value="Nueva Publicacion" style="margin-top:5px;border-radius:10px;"/>
+             <div class="col-12" id="PublicacionesPerfil">
         </div>
     
 
 
     </div>
     
+    <!-- Modal Editar Publicacion -->
+<div class="modal fade" id="EditPublicacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="Image/R_Logo.png" style="width:25px;height:25px" />
+          <p>&ensp;</p>
+        <h5 class="modal-title">Editar Publicacion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+   
+      <div class="modal-body">
+          <div class="col-12" >
+                <label>Titulo:</label>
+                <br />
+                <input id="EditTituloPublicacion" type="text" class="col-12" placeholder="Titulo" />
+          </div>
+          <br />
+        
+          <div class="col-12" >
+                <label>Mensaje:</label>
+                <br />
+                <textarea class="col-12" id="EditTextoPublicacion" rows="8" cols="50" placeholder="Escribe algo..."></textarea>
+              
+          </div>
+           <br />
+        
+
+         
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" onclick="EjecutarEditar()" data-bs-dismiss="modal">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
+
+
+    <!-- Modal Publicacion -->
+<div class="modal fade" id="NewPublicacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="Image/R_Logo.png" style="width:25px;height:25px" />
+          <p>&ensp;</p>
+        <h5 class="modal-title" id="Publicacion" >Nueva Publicacion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+   
+      <div class="modal-body">
+          <div class="col-12" >
+                <label>Titulo:</label>
+                <br />
+                <input id="TituloPublicacion" type="text" class="col-12" placeholder="Titulo" />
+          </div>
+          <br />
+        
+          <div class="col-12" >
+                <label>Mensaje:</label>
+                <br />
+                <textarea class="col-12" id="TextoPublicacion" rows="8" cols="50" placeholder="Escribe algo..."></textarea>
+              
+          </div>
+           <br />
+        
+
+         
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" onclick="NewPublicacion()" data-bs-dismiss="modal">Publicar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Modal -->
 <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
