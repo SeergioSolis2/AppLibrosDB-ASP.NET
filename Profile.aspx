@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="Perfil" Language="C#" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="AppLibrosDB.Profile"  MasterPageFile="~/Site.Master"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Contenido" Runat="Server">
-    <div class="col-4 d-flex justify-content-left"> 
+    <div class="row">
+        <div class="col-3 d-flex justify-content-left"> 
         <div class="card p-4"> 
             <div class=" image d-flex flex-column justify-content-center align-items-center"> 
                 <button class="btn btn-secondary"> 
@@ -43,7 +44,16 @@
             </div> 
 
         </div>
+        </div>
+
+        <div class="col-8" style="border:5px solid black">
+
+        </div>
+    
+
+
     </div>
+    
 
 
 
@@ -96,7 +106,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick=" Registro()" data-bs-dismiss="modal">Editar Perfil</button>
+        <button type="button" class="btn btn-primary" onclick="EditarPerfil()" data-bs-dismiss="modal">Editar Perfil</button>
       </div>
     </div>
   </div>

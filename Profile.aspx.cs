@@ -13,7 +13,7 @@ namespace AppLibrosDB
 {
     public partial class Profile : System.Web.UI.Page
     {
-
+        //Conexion Sergio
         public static string conexion = "Data Source=DESKTOP-PND4PUV;Initial Catalog=master;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -140,6 +140,34 @@ namespace AppLibrosDB
             return jsonString;
         }
 
+
+
+
+        [WebMethod]
+
+        public static void EditarPerfil(string Nombres,string Apellido_P,string Apellido_M,string Usuario,string Email)
+        {
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                String sql = "Update appdblibro.dbo.perfil set Nombres='"+Nombres+"',Apellido_P='"+Apellido_P+"',Apellido_M='"+Apellido_M+"',Usuario='"+Usuario+"',Email='"+Email+"' where IDPerfil=" + HttpContext.Current.Session["IdUser"] + "";
+ 
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                      
+                    }
+                }
+            }
+
+
+
+        }
 
 
         [WebMethod]

@@ -22,8 +22,9 @@ namespace AppLibrosDB
         protected void Page_Load(object sender, EventArgs e)
         {
             string username = null;
+            string IdUser = null;
             Context.Session.Add("Usuario",username);
-
+            Context.Session.Add("IdUser", IdUser);
         }
 
         [WebMethod]
@@ -39,7 +40,7 @@ namespace AppLibrosDB
          
 
                 //String sql = "SELECT Usuario,Contrasena FROM appdblibros.perfil where Usuario='" + Username + "' and Contrasena='" + password + "'";
-                String sql = "SELECT Usuario,Contrasena FROM appdblibro.dbo.perfil where (Usuario='" + Username + "' and Contrasena='" + password + "') or (Email='" + Username + "'and Contrasena='" + password + "') ;";
+                String sql = "SELECT IDPerfil,Usuario,Contrasena FROM appdblibro.dbo.perfil where (Usuario='" + Username + "' and Contrasena='" + password + "') or (Email='" + Username + "'and Contrasena='" + password + "') ;";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
@@ -48,11 +49,12 @@ namespace AppLibrosDB
                         HttpContext.Current.Session["Usuario"]= Username;
                         while (reader.Read())
                         {
-                           
+                            HttpContext.Current.Session["IdUser"] = reader[0].ToString();
                             Perfil.Add(new Perfil()
                             {
-                                Usuario = reader[0].ToString(),
-                                Password = reader[1].ToString()
+                                IDPerfil=reader[0].ToString(),
+                                Usuario = reader[1].ToString(),
+                                Password = reader[2].ToString()
                                 
                             }
                             );

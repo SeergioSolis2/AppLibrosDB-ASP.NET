@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\MatBlazor.2.8.0\build\MatBlazor.props" Condition="Exists('packages\MatBlazor.2.8.0\build\MatBlazor.props')" />
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -315,6 +316,10 @@
     <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.slim.js" />
     <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="packages\jQuery.3.4.1\Tools\jquery-3.4.1.intellisense.js" />
+    <Content Include="packages\MatBlazor.2.8.0\lib\netstandard2.1\MatBlazor.dll" />
+    <Content Include="packages\MatBlazor.2.8.0\lib\netstandard2.1\MatBlazor.xml" />
+    <Content Include="packages\MatBlazor.2.8.0\staticwebassets\dist\matBlazor.css" />
+    <Content Include="packages\MatBlazor.2.8.0\staticwebassets\dist\matBlazor.js" />
     <Content Include="packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\es\System.Web.Mvc.resources.dll" />
     <Content Include="packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\es\System.Web.Mvc.xml" />
     <Content Include="packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll" />
@@ -670,6 +675,8 @@
     <Content Include="packages\Newtonsoft.Json.12.0.2\Newtonsoft.Json.12.0.2.nupkg" />
     <Content Include="packages\WebGrease.1.6.0\.signature.p7s" />
     <Content Include="packages\WebGrease.1.6.0\WebGrease.1.6.0.nupkg" />
+    <Content Include="PWA\service-worker.js" />
+    <Content Include="PWA\service-worker.published.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -718,6 +725,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Site.Master" />
+    <Content Include="Properties\launchSettings.json" />
+    <Content Include="PWA\manifest.json" />
+    <Content Include="packages\MatBlazor.2.8.0\.signature.p7s" />
+    <Content Include="packages\MatBlazor.2.8.0\buildMultiTargeting\MatBlazor.props" />
+    <Content Include="packages\MatBlazor.2.8.0\buildTransitive\MatBlazor.props" />
+    <Content Include="packages\MatBlazor.2.8.0\build\MatBlazor.props" />
+    <Content Include="packages\MatBlazor.2.8.0\build\Microsoft.AspNetCore.StaticWebAssets.props" />
+    <Content Include="packages\MatBlazor.2.8.0\contentFiles\any\netstandard2.1\Properties\launchSettings.json" />
+    <Content Include="packages\MatBlazor.2.8.0\content\Properties\launchSettings.json" />
+    <Content Include="packages\MatBlazor.2.8.0\MatBlazor.2.8.0.nupkg" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="scss\.DS_Store" />
     <Content Include="scss\bootstrap\.DS_Store" />
@@ -865,6 +882,7 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\MatBlazor.2.8.0\build\MatBlazor.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MatBlazor.2.8.0\build\MatBlazor.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
