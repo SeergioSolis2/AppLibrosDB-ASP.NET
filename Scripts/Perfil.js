@@ -9,6 +9,8 @@ const EditApellidoP = document.querySelector("#EditApellido_Paterno");
 const EditApellidoM = document.querySelector("#EditApellido_Materno");
 const EditUser = document.querySelector("#Edituser");
 const EditEmail = document.querySelector("#EditEmail");
+const Perfilesmsg = document.querySelector("#Perfilesmsg");
+
 var IDPerfil = 0;
 document.addEventListener("DOMContentLoaded", async function (event) {
 
@@ -16,7 +18,8 @@ document.addEventListener("DOMContentLoaded", async function (event) {
 
 })
 
-async function EditarPerfil() {
+async function EditarPerfil() 
+
 
     var Nombres = EditNombre.value;
     var Apellido_P = EditApellidoP.value;
@@ -83,9 +86,9 @@ async function DatosPerfil() {
 }
 
 
-async function ConteoFollowers(idPerfil) {
+async function cargarPerfiles(idPerfil) {
     const Datos={ idPerfil }
-    await fetch('Profile.aspx/ConteoFollowers', {
+    await fetch('Profile.aspx/cargarperfiles', {
 
         method: 'POST', // or 'PUT'
         headers: {
@@ -96,22 +99,53 @@ async function ConteoFollowers(idPerfil) {
     })
         .then(response => response.json())
         .then(data => {
-            const Followers = JSON.parse(data.d)
-         
-            Followers.forEach(Follow => {
-                console.log(Follow)
-                FollowerPerfil.innerHTML = `${Follow.Followers} Seguidores`
-                FollowingsPerfil.innerHTML = `${Follow.Followings} Seguidos`
+            const perfiles = JSON.parse(data.d)
+            
+            perfiles.forEach(Perfil => {
+                console.log(Perfil)
+                var a = parent.document.createElement("a")
+                a.setAttribute("id", Perfil.IDPerfil)
+                a.innerHTML = Perfil.Nombres
+                Perfilesmsg.appendChild(a)
+                    
             }
             )
 
-            return Followers
+    return perfiles;
 
-        })
+})
 
         .catch(error => console.error('Error:', error))
 
 
+
+
+}
+
+async function EditarPerfil() {
+
+    var Nombres = EditNombre.value;
+    var Apellido_P = EditApellidoP.value;
+    var Apellido_M = EditApellidoM.value;
+    var Usuario = EditUser.value;
+    var Email = EditEmail.value;
+
+    const Datos = { Nombres, Apellido_P, Apellido_M, Usuario, Email }
+
+    console.log(Datos);
+
+    await fetch('Profile.aspx/EditarPerfil', {
+
+        method: 'POST', // or 'PUT'
+        headers: {
+
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(Datos)
+
+    })
+
+    await DatosPerfil();
 
 
 }

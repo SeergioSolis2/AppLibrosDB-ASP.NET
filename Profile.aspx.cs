@@ -13,8 +13,8 @@ namespace AppLibrosDB
 {
     public partial class Profile : System.Web.UI.Page
     {
-        //Conexion Sergio
-        public static string conexion = "Data Source=DESKTOP-PND4PUV;Initial Catalog=master;Integrated Security=True";
+        //public static string conexion = "Data Source=DESKTOP-PND4PUV;Initial Catalog=master;Integrated Security=True";
+        public static string conexion = "Data Source=JOSEFATMH;Initial Catalog=master;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e)
         {
