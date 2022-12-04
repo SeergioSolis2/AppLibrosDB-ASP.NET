@@ -36,7 +36,7 @@ namespace AppLibrosDB
 
 
 
-                String sql = "SELECT Nombres,Apellido_P,Apellido_M,Usuario,Email,IDPerfil,Fnac,CONVERT (char(10), Freg, 103) FROM appdblibro.dbo.perfil where (Usuario='" + HttpContext.Current.Session["Usuario"] + "' ) or (Email='" + HttpContext.Current.Session["Usuario"] + "') ;";
+                String sql = "SELECT Nombres,Apellido_P,Apellido_M,Usuario,Email,IDPerfil,Fnac,CONVERT (char(10), Freg, 103),Rep FROM appdblibro.dbo.perfil where (Usuario='" + HttpContext.Current.Session["Usuario"] + "' ) or (Email='" + HttpContext.Current.Session["Usuario"] + "') ;";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
@@ -55,7 +55,8 @@ namespace AppLibrosDB
                                 Email =reader[4].ToString(),
                                 IDPerfil=reader[5].ToString(),
                                 FechaNacimiento=reader[6].ToString(),
-                                FechaRegistro=reader[7].ToString()
+                                FechaRegistro=reader[7].ToString(),
+                                Rep= reader[8].ToString()
                             }
                             );
 
@@ -70,6 +71,45 @@ namespace AppLibrosDB
             string jsonString = js.Serialize(Perfil);
             return jsonString;
 
+        }
+
+
+        [WebMethod]
+        public static void Reputacionperfil()
+        {
+            int promedioreputacion = 0;
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                String sql = "Select AVG(rating) from appdblibro.dbo.publicaciones where IDPerfil="+HttpContext.Current.Session["IdUser"] + "";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            promedioreputacion = int.Parse(reader[0].ToString());
+
+                        }
+                    }
+                }
+
+
+                sql = "update appdblibro.dbo.perfil set Rep="+promedioreputacion+" where IDPerfil="+ HttpContext.Current.Session["IdUser"] + "";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                 
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+
+
+                    }
+                }
+            }
         }
 
 
@@ -294,6 +334,9 @@ namespace AppLibrosDB
             HttpContext.Current.Session["Usuario"] = null;
 
         }
+
+
+
 
     }
 }

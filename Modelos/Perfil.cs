@@ -25,6 +25,7 @@ namespace AppLibrosDB.Modelos
 
         public string Followings { get; set; }
 
+        public string Rep { get; set; }
 
 
     }

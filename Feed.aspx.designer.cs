@@ -11,7 +11,7 @@ namespace AppLibrosDB
 {
 
 
-    public partial class Profile
+    public partial class Feed
     {
     }
 }

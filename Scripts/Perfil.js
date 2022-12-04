@@ -17,11 +17,24 @@ const EditTituloPublicacion = document.querySelector("#EditTituloPublicacion");
 var IDPublicacion = 0;
 var IDPerfil = 0;
 document.addEventListener("DOMContentLoaded", async function (event) {
-
+    await Reputacionperfil();
     await DatosPerfil();
     await GetPublicacion();
-
+ 
 })
+
+async function Reputacionperfil() {
+    await fetch('Profile.aspx/Reputacionperfil', {
+
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+   
+
+    })
+}
+
 
 
 async function DeletePublicacion(id) {
@@ -238,7 +251,7 @@ async function DatosPerfil() {
                 username.innerHTML = `@${users.Usuario}`;
                 CorreoPerfil.innerHTML = `${users.Email}`;
                 IDPerfil = users.IDPerfil;
-                JoinPerfil.innerHTML = `<label style="">Joined </label><br>${users.FechaRegistro}`;
+                JoinPerfil.innerHTML = `<span style="font-size:20px;vertical-align: middle;">${users.Rep}</span>&nbsp<img src="Image/Estrella.png" style="width:25px;heigth:25px;" ></img><br><label style="">Joined </label><br>${users.FechaRegistro}`;
                 EditNombre.value=users.Nombres
                 EditApellidoP.value =users.ApellidoP
                 EditApellidoM.value = users.ApellidoM

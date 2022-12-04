@@ -15,6 +15,7 @@ namespace AppLibrosDB.Modelos
         public string FechaPublicacion { get; set; }
 
         public string Rating { get; set; }
+        public string NombrePerfil { get; set; }
 
     }
 }
