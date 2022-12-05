@@ -43,10 +43,12 @@ async function ValidarLogin() {
             if (Usuarios.length > 0) {
                 window.location.href = "/Profile.aspx";
             } else {
-               
+
+                Swal.fire('Verifique su contraseña y usuario', '', 'error')
+              
             }
 
-            return Usuarios
+       
        
         })
   
@@ -67,7 +69,21 @@ async function Registro() {
     var Usuario = ModalUser.value;
     var Email = ModalEmail.value;
     var Contrasena = ModalPassword.value;
-    const Datos = { Nombres, Apellido_P,Apellido_M,Sexo,Nacionalidad,FNac,Usuario,Email,Contrasena }
+    const Datos = { Nombres, Apellido_P, Apellido_M, Sexo, Nacionalidad, FNac, Usuario, Email, Contrasena }
+    if (Nombres=="") {
+        Swal.fire('El Nombre es muy corto o nulo', '', 'error')
+        return
+    }
+
+    if (Apellido_P == "") {
+        Swal.fire('El Apellido Paterno es muy corto o nulo', '', 'error')
+        return
+    }
+
+    if (Apellido_M == "") {
+        Swal.fire('El Apellido Materno es muy corto o nulo', '', 'error')
+        return
+    }
     console.log(Datos);
     await fetch('Login.aspx/Registro', {
 

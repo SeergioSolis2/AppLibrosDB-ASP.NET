@@ -54,7 +54,53 @@
 
 
     </div>
+    </div>
+    <br/>
+  
+    <div class="row" style="margin-left:10px;">
+        <div class="col-12" style="border:5px solid gray;border-radius:10px;height:500px;overflow:auto;background-color:whitesmoke;text-align:center" >
+            <br />
+            <label>TU BIBLIOTECA</label>
+            <div class="col-12" style="text-align:left">
+              <select class="col-12" id="NewLibroSelect">
+                  <option value="0" selected>Selecciona un libro</option>
+
+              </select>
+                <br/>
+                <br/>
+                <input class="btn-success" id="btnlibro"  style="border-radius:10px;width:auto;text-align:center" type="button" value="Agregar Nuevo Libro" />
+            </div>
+            <br />
+            <div class="col-12" >
+                <table class="table  col-12">
+                    <thead style="background-color:gray;color:white">
+                        <tr>
+                             <td>ISBN</td>
+                             <td>Autor</td>
+                             <td>Titulo</td>
+                             <td>Edicion</td>
+                             <td>Editorial</td>
+                             <td>Lugar</td>
+                             <td>Anio</td>
+                             <td>Paginas</td>
+                             <td>Rating</td>
+                             <td>Opciones</td>
+                        </tr>
+                    </thead>
+                    <tbody id="Tuslibros">
+
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+  
     
+  
+
+
+
     <!-- Modal Editar Publicacion -->
 <div class="modal fade" id="EditPublicacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

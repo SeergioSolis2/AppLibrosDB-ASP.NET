@@ -44,7 +44,7 @@
                     <a class="nav-link" href="Buscador.aspx">★Buscar Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">★Contact</a>
+                    <a class="nav-link" href="Inbox.aspx">★Contact</a>
                 </li>
               </ul>
           
@@ -71,7 +71,12 @@
 <%
             }
 %>
-
+<%if (Page.Title == "Inbox")
+    {
+%>
+    <script src="Scripts/Inbox.js" ></script>
+<% }
+%>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.js"></script>

@@ -7,6 +7,7 @@ const FollowerPerfil = document.querySelector("#Followers");
 const FollowingsPerfil = document.querySelector("#Followings");
 const DivPublicaciones = document.querySelector("#PublicacionesPerfil");
 const BotonPerfil = document.querySelector("#btnPerfil")
+const DivLibros = document.querySelector('#Tuslibros');
 var Idperfilvisitado = "";
 let seguidos = []
 document.addEventListener("DOMContentLoaded", async function (event) {
@@ -15,14 +16,62 @@ document.addEventListener("DOMContentLoaded", async function (event) {
     await GetSeguidos();
     $("#Buscador").on("change", async function () {
         $('#ViewPerfil').removeClass('oculto')
+        $('#LibrosBuscador').removeClass('oculto')
         await Reputacionperfil($(this).val())
         await DatosPerfil($(this).val());
         await GetPublicacion($(this).val());
+        await Gettuslibros($(this).val())
       
     });
 
     $('#Buscador').select2();
 })
+
+
+async function Gettuslibros(id) {
+    DivLibros.innerHTML = "";
+    const Datos = {id}
+    await fetch('Buscador.aspx/Gettuslibros', {
+
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(Datos)
+
+
+    })
+
+        .then(response => response.json())
+        .then(data => {
+            const Libros = JSON.parse(data.d)
+
+            Libros.forEach(libro => {
+                var tr = document.createElement("tr");
+
+                tr.innerHTML = `<td>${libro.ISBN}</td>
+                     <td>${libro.Autor}</td>
+                     <td>${libro.Titulo}</td>
+                     <td>${libro.Edicion}</td>
+                     <td>${libro.Editorial}</td>
+                     <td>${libro.Lugar}</td>
+                     <td>${libro.Anio}</td>
+                     <td>${libro.Paginas}</td>
+                     <td>${libro.Rating} &nbsp<img src="Image/Estrella.png" style="width:25px;heigth:25px;" ></img></td>
+                    `
+
+                DivLibros.appendChild(tr);
+            }
+            )
+
+
+
+        })
+
+        .catch(error => console.error('Error:', error))
+}
+
+
 
 async function Reputacionperfil(idperfil) {
     const Datos = {idperfil}

@@ -40,7 +40,7 @@ namespace AppLibrosDB
          
 
                 //String sql = "SELECT Usuario,Contrasena FROM appdblibros.perfil where Usuario='" + Username + "' and Contrasena='" + password + "'";
-                String sql = "SELECT IDPerfil,Usuario,Contrasena FROM appdblibro.dbo.perfil where (Usuario='" + Username + "' and Contrasena='" + password + "') or (Email='" + Username + "'and Contrasena='" + password + "') ;";
+                String sql = "SELECT IDPerfil,Usuario,Contrasena FROM appdblibro.dbo.perfil where (Usuario='" + Username + "' and Contrasena=HASHBYTES('MD5','" + password + "')) or (Email='" + Username + "'and Contrasena=HASHBYTES('MD5','" + password + "')) ;";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
@@ -86,7 +86,7 @@ namespace AppLibrosDB
 
 
                 //String sql = "SELECT Usuario,Contrasena FROM appdblibros.perfil where Usuario='" + Username + "' and Contrasena='" + password + "'";
-                String sql = "INSERT INTO appdblibro.dbo.perfil(Nombres, Apellido_P,Apellido_M,Sexo,Nacionalidad,FNac,Usuario,Email,Contrasena,FReg,Rep) VALUES ('"+Nombres+"',' "+Apellido_P+"', '"+Apellido_M+ "', '" + Sexo + "', '" + Nacionalidad + "', '" + FNac + "', '" + Usuario + "', '" + Email + "', '" + Contrasena + "',GETDATE(),0)";
+                String sql = "INSERT INTO appdblibro.dbo.perfil(Nombres, Apellido_P,Apellido_M,Sexo,Nacionalidad,FNac,Usuario,Email,Contrasena,FReg,Rep) VALUES ('"+Nombres+"',' "+Apellido_P+"', '"+Apellido_M+ "', '" + Sexo + "', '" + Nacionalidad + "', '" + FNac + "', '" + Usuario + "', '" + Email + "', HASHBYTES('MD5','" + Contrasena + "'),GETDATE(),0)";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();

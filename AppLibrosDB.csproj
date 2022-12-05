@@ -127,6 +127,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador.aspx.cs">
+      <DependentUpon>Administrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador.aspx.designer.cs">
+      <DependentUpon>Administrador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -178,7 +185,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Inbox.aspx.cs">
+      <DependentUpon>Inbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inbox.aspx.designer.cs">
+      <DependentUpon>Inbox.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Comentarios.cs" />
+    <Compile Include="Modelos\Libro.cs" />
+    <Compile Include="Modelos\mensajes.cs" />
     <Compile Include="Modelos\Perfil.cs" />
     <Compile Include="Modelos\Publicacion.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
@@ -208,6 +224,7 @@
   <ItemGroup>
     <Content Include=".gitattributes" />
     <Content Include=".gitignore" />
+    <Content Include="Administrador.aspx" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
@@ -272,6 +289,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\inbox.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Nav.css" />
     <Content Include="css\bootstrap.min.css" />
@@ -293,6 +311,7 @@
     <Content Include="Image\Estrella.png" />
     <Content Include="Image\FotoPerfil.png" />
     <Content Include="Image\R_Logo.png" />
+    <Content Include="Inbox.aspx" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\main.js" />
@@ -689,10 +708,12 @@
     <Content Include="packages\WebGrease.1.6.0\WebGrease.1.6.0.nupkg" />
     <Content Include="PWA\service-worker.js" />
     <Content Include="PWA\service-worker.published.js" />
+    <Content Include="Scripts\Administrador.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Buscador.js" />
     <Content Include="Scripts\Feed.js" />
+    <Content Include="Scripts\Inbox.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />

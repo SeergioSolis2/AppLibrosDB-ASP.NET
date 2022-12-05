@@ -24,6 +24,52 @@ namespace AppLibrosDB
                 Response.Redirect("~/Login.aspx");
             }
         }
+        [WebMethod]
+        public static string Gettuslibros(int id)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            List<Libro> Libro = new List<Libro>();
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                String sql = " select A.ISBN,Autor,Titulo,Edicion,Editorial,Lugar,Anio,Paginas,Rating from appdblibro.dbo.libros A join appdblibro.dbo.leidos B on B.ISBN=A.ISBN where B.IDPerfil=" + id+ "";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+
+                            Libro.Add(new Libro()
+                            {
+                                ISBN = reader[0].ToString(),
+                                Autor = reader[1].ToString(),
+                                Titulo = reader[2].ToString(),
+                                Edicion = reader[3].ToString(),
+                                Editorial = reader[4].ToString(),
+                                Lugar = reader[5].ToString(),
+                                Anio = reader[6].ToString(),
+                                Paginas = reader[7].ToString(),
+                                Rating = reader[8].ToString(),
+                            }
+                            );
+
+
+
+
+                        }
+                    }
+                }
+            }
+
+            string jsonString = js.Serialize(Libro);
+            return jsonString;
+        }
 
         [WebMethod]
         public static void Reputacionperfil(int idperfil)

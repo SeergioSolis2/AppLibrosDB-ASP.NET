@@ -61,6 +61,41 @@
         </div>
         </div>
        </div>
+
+
+    <br />
+    <br />
+     <div class="row oculto" style="margin-left:10px;" id="LibrosBuscador" >
+        <div class="col-12" style="border:5px solid gray;border-radius:10px;height:500px;overflow:auto;background-color:whitesmoke;text-align:center" >
+            <br />
+            <label>BIBLIOTECA</label>
+         
+            <br />
+            <div class="col-12" >
+                <table class="table  col-12">
+                    <thead style="background-color:gray;color:white">
+                        <tr>
+                             <td>ISBN</td>
+                             <td>Autor</td>
+                             <td>Titulo</td>
+                             <td>Edicion</td>
+                             <td>Editorial</td>
+                             <td>Lugar</td>
+                             <td>Anio</td>
+                             <td>Paginas</td>
+                             <td>Rating</td>
+                          
+                        </tr>
+                    </thead>
+                    <tbody id="Tuslibros">
+
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+
 </asp:Content>
 
 

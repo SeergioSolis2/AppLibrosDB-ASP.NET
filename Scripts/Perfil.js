@@ -14,14 +14,152 @@ const TituloPublicacion = document.querySelector("#TituloPublicacion");
 const DivPublicaciones = document.querySelector("#PublicacionesPerfil");
 const EditTextoPublicacion = document.querySelector("#EditTextoPublicacion");
 const EditTituloPublicacion = document.querySelector("#EditTituloPublicacion");
+const SelectBuscar = document.querySelector('#NewLibroSelect')
+const DivLibros = document.querySelector('#Tuslibros');
 var IDPublicacion = 0;
 var IDPerfil = 0;
 document.addEventListener("DOMContentLoaded", async function (event) {
+    await Gettuslibros();
+    await llenarBuscador();
     await Reputacionperfil();
     await DatosPerfil();
     await GetPublicacion();
- 
+    $('#NewLibroSelect').select2();
+
+   
 })
+
+$("#btnlibro").on("click", async function () {
+
+    if ($('#NewLibroSelect').val() != 0) {
+        await InsertarLibro($('#NewLibroSelect').val())
+        await Gettuslibros();
+
+    } else {
+        Swal.fire('Selecciona un libro', '', 'error')
+    }
+
+});
+
+
+async function Gettuslibros() {
+    DivLibros.innerHTML = "";
+    await fetch('Profile.aspx/Gettuslibros', {
+
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+       
+
+    })
+
+        .then(response => response.json())
+        .then(data => {
+            const Libros = JSON.parse(data.d)
+
+            Libros.forEach(libro => {
+                var tr = document.createElement("tr");
+                
+                     tr.innerHTML = `<td>${libro.ISBN}</td>
+                     <td>${libro.Autor}</td>
+                     <td>${libro.Titulo}</td>
+                     <td>${libro.Edicion}</td>
+                     <td>${libro.Editorial}</td>
+                     <td>${libro.Lugar}</td>
+                     <td>${libro.Anio}</td>
+                     <td>${libro.Paginas}</td>
+                     <td>${libro.Rating} &nbsp<img src="Image/Estrella.png" style="width:25px;heigth:25px;" ></img></td>
+                     <td><input type="button" value="Eliminar" class="btn-danger" onclick="EliminarLibro(${libro.ISBN})"</td>`
+               
+                DivLibros.appendChild(tr);
+            }
+            )
+
+
+
+        })
+
+        .catch(error => console.error('Error:', error))
+}
+
+
+async function EliminarLibro(id) {
+    const Datos = { id }
+    Swal.fire({
+        title: '¿Deseas eliminar este Libro?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            Swal.fire('Se elimino el libro Correctamente', '', 'success')
+            await fetch('Profile.aspx/EliminarLibro', {
+
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(Datos)
+
+            })
+
+            await Gettuslibros();
+        }
+    })
+    
+   
+ 
+}
+
+
+async function InsertarLibro(id) {
+    const Datos = {id}
+    await fetch('Profile.aspx/InsertarLibro', {
+
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(Datos)
+
+    })
+}
+
+async function llenarBuscador() {
+    await fetch('Profile.aspx/GetLibros', {
+
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+
+    })
+        .then(response => response.json())
+        .then(data => {
+            const Libros = JSON.parse(data.d)
+           
+            Libros.forEach(libro => {
+                var Option = document.createElement('option')
+                Option.value = libro.ISBN
+                Option.textContent = libro.Titulo
+                SelectBuscar.appendChild(Option)
+
+            }
+            )
+
+
+
+        })
+
+        .catch(error => console.error('Error:', error))
+
+
+}
+
+
 
 async function Reputacionperfil() {
     await fetch('Profile.aspx/Reputacionperfil', {

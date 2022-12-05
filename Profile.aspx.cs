@@ -24,6 +24,157 @@ namespace AppLibrosDB
             }
         }
 
+
+        [WebMethod]
+
+        public static void EliminarLibro(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                String sql = " Delete from appdblibro.dbo.leidos where ISBN="+id+" and IDPerfil=" + HttpContext.Current.Session["IdUser"] + "";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                    }
+                }
+            }
+        }
+
+        [WebMethod]
+        public static string Gettuslibros()
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            List<Libro> Libro = new List<Libro>();
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                String sql = " select A.ISBN,Autor,Titulo,Edicion,Editorial,Lugar,Anio,Paginas,Rating from appdblibro.dbo.libros A join appdblibro.dbo.leidos B on B.ISBN=A.ISBN where B.IDPerfil="+HttpContext.Current.Session["IdUser"]+"";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+
+                            Libro.Add(new Libro()
+                            {
+                                ISBN = reader[0].ToString(),
+                                Autor = reader[1].ToString(),
+                                Titulo = reader[2].ToString(),
+                                Edicion = reader[3].ToString(),
+                                Editorial = reader[4].ToString(),
+                                Lugar=reader[5].ToString(),
+                                Anio=reader[6].ToString(),
+                                Paginas=reader[7].ToString(),
+                                Rating=reader[8].ToString(),
+                            }
+                            );
+
+
+
+
+                        }
+                    }
+                }
+            }
+
+            string jsonString = js.Serialize(Libro);
+            return jsonString;
+        }
+
+
+        [WebMethod]
+
+        public static void InsertarLibro(int id)
+        {
+            int flag = 0;
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+                String sql = "Select * From appdblibro.dbo.leidos where  ISBN=" + id + "and IDPerfil=" + HttpContext.Current.Session["IdUser"] + "";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+
+                            flag = 1;
+
+                        }
+
+                    }
+                }
+                if (flag == 0)
+                {
+                    sql = "insert into appdblibro.dbo.leidos (ISBN,IDPerfil) values (" + id + "," + HttpContext.Current.Session["IdUser"] + ")";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                       
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+
+                        }
+                    }
+                }
+                
+            }
+        }
+
+        [WebMethod]
+        public static string GetLibros()
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            List<Libro> Libro = new List<Libro>();
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+
+
+
+                String sql = " SELECT Titulo,ISBN FROM appdblibro.DBO.libros;";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+
+                            Libro.Add(new Libro()
+                            {
+                                Titulo=reader[0].ToString(),
+                                ISBN=reader[1].ToString(),
+                              
+                            }
+                            );
+
+
+
+
+                        }
+                    }
+                }
+            }
+
+            string jsonString = js.Serialize(Libro);
+            return jsonString;
+        }
+
         [WebMethod]
         public static string GetPerfil()
         {
