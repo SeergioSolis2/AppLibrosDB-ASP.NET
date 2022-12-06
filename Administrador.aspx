@@ -13,7 +13,7 @@
     <div class="row" >
      
          <div class="col-8" style="border:5px solid black;margin-top:15px;margin-left:25px">
-                <input type="button" class="btn-outline-success" data-bs-toggle="modal" data-bs-target="#NewLibroModal" onclick="GuardarLibro" value="Nuevo Libro" style="margin-top:10px" />
+                <input type="button" class="btn-outline-success" data-bs-toggle="modal" data-bs-target="#NewLibroModal" value="Nuevo Libro" style="margin-top:10px" />
                 <br/> <br/>
                 <table class="table ">
                     <thead style="background-color:gray;color:white">
@@ -37,6 +37,232 @@
             </div>
 
     </div>
+
+
+        <br />
+    <div class="row">
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+            <span>Usuarios</span>
+            <table  class="table">
+                <thead style="background-color:gray">
+                    <tr>
+                        <td>IDPerfil</td>
+                        <td>Username</td>
+                        <td>Nombre</td>
+                       
+                    </tr>
+                    
+                </thead>
+                <tbody id="tablausuario">
+
+                </tbody>
+            </table>
+
+        </div>
+      
+
+    </div>
+
+    <br />
+
+    <div class="col-12" style="text-align:center">
+           <span >REPORTES</span>
+    </div>
+
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+            <span>Libros mejor calificados</span>
+            <table  class="table">
+                <thead style="background-color:gray">
+                    <tr>
+                        <td>Autor</td>
+                        <td>Titulo</td>
+                        <td>Rating</td>
+                    </tr>
+                    
+                </thead>
+                <tbody id="reporte1">
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+                <span>Libros peor calificados</span>
+                <table class="table">
+                <thead style="background-color:gray">
+                      <tr>
+                        <td>Autor</td>
+                        <td>Titulo</td>
+                        <td>Rating</td>
+                    </tr>
+                </thead>
+                <tbody id="reporte2">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+     <br />
+    <div class="row">
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+            <span>.Libros mas leidos</span>
+            <table  class="table">
+                <thead style="background-color:gray">
+                    <tr>
+                        <td>#</td>
+                        <td>ISBN</td>
+                       
+                    </tr>
+                    
+                </thead>
+                <tbody id="reporte3">
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+                <span>Libros menos leidos</span>
+                <table class="table">
+                <thead style="background-color:gray">
+                      <tr>
+                      <td>#</td>
+                      <td>ISBN</td>
+                    </tr>
+                </thead>
+                <tbody id="reporte4">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+     <br />
+    <div class="row">
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+            <span>Perfiles con Mejor Reputacion</span>
+            <table  class="table">
+                <thead style="background-color:gray">
+                    <tr>
+                        <td>Usuario</td>
+                        <td>Reputacion</td>
+                       
+                    </tr>
+                    
+                </thead>
+                <tbody id="reporte5">
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+                <span>Publicacion con Mejor Reputacion</span>
+                <table class="table">
+                <thead style="background-color:gray">
+                      <tr>
+                      <td>IDPublicacion</td>
+                      <td>Cuerpo</td>
+                      <td>Rating</td>
+                    </tr>
+                </thead>
+                <tbody id="reporte6">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+
+      <br />
+    <div class="row">
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+            <span>Perfiles con mas libros leidos</span>
+            <table  class="table">
+                <thead style="background-color:gray">
+                    <tr>
+                        <td>#Libros</td>
+                        <td>IDPerfil</td>
+                       
+                    </tr>
+                    
+                </thead>
+                <tbody id="reporte7">
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+                <span>Perfiles con mas seguidores</span>
+                <table class="table">
+                <thead style="background-color:gray">
+                      <tr>
+                      <td>#Followers</td>
+                      <td>IDPerfil</td>
+                    
+                    </tr>
+                </thead>
+                <tbody id="reporte8">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+          <br />
+    <div class="row">
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+            <span>Perfiles con menos seguidores</span>
+            <table  class="table">
+                <thead style="background-color:gray">
+                    <tr>
+                        <td>#Followers</td>
+                        <td>IDPerfil</td>
+                       
+                    </tr>
+                    
+                </thead>
+                <tbody id="reporte9">
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-6" style="border:5px solid black;margin-top:15px;margin-left:25px">
+                <span>Perfiles mas activos</span>
+                <table class="table">
+                <thead style="background-color:gray">
+                      <tr>
+                      <td>#Publicaciones</td>
+                      <td>IDPerfil</td>
+                    
+                    </tr>
+                </thead>
+                <tbody id="reporte10">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+  
 
 
 
@@ -93,7 +319,7 @@
             <div class="col-12" >
                 <label>Rating:</label>
                 <br />
-                <input id="ModalRating" type="text" class="col-12"  />
+                <input id="ModalRating" type="number" max="5" class="col-12"  />
           </div>
         
           
@@ -101,7 +327,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick=" " data-bs-dismiss="modal">Guardar Libro</button>
+        <button type="button" class="btn btn-primary" onclick="NewLibro()" data-bs-dismiss="modal">Guardar Libro</button>
       </div>
     </div>
   </div>

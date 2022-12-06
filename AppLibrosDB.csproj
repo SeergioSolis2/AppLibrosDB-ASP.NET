@@ -197,6 +197,7 @@
     <Compile Include="Modelos\mensajes.cs" />
     <Compile Include="Modelos\Perfil.cs" />
     <Compile Include="Modelos\Publicacion.cs" />
+    <Compile Include="Modelos\Reportes.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

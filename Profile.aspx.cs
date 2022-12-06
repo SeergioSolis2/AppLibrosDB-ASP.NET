@@ -238,11 +238,15 @@ namespace AppLibrosDB
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader=command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            promedioreputacion = int.Parse(reader[0].ToString());
+                            if (reader[0].ToString() != "")
+                            {
+                                promedioreputacion = int.Parse(reader[0].ToString());
+                            }
+                         
 
                         }
                     }
